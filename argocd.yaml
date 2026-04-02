@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: la-mia-applicazione
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/LoriGaetani/lab1.git'
+    targetRevision: HEAD # Può essere un branch (es. main), un tag o un commit
+    path: backend  # La cartella all'interno del repo che contiene i file YAML o Helm chart
+  destination:
+    server: 'https://kubernetes.default.svc' # Fa il deploy nello stesso cluster in cui gira Argo CD
+    namespace: prova1
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated: 
+      prune: true #se elimino un file anche sul cluster viene eliminata la risorsa
+      selfHeal: true #se faccio dei comandi manuali vengo annulati e il cluster riportato allo stato definito nel git
