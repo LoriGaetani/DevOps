@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/LoriGaetani/lab1.git'
-    targetRevision: HEAD # Può essere un branch (es. main), un tag o un commit
-    path: backend  # La cartella all'interno del repo che contiene i file YAML o Helm chart
+    repoURL: 'https://github.com/LoriGaetani/DevOps.git'
+    targetRevision: master # Può essere un branch (es. main), un tag o un commit
+    path: cpo-backend-chart  # La cartella all'interno del repo che contiene i file YAML o Helm chart
   destination:
     server: 'https://kubernetes.default.svc' # Fa il deploy nello stesso cluster in cui gira Argo CD
     namespace: prova1
